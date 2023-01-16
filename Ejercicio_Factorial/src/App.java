@@ -27,10 +27,10 @@ public class App {
     }
 
     public static int Validacion(int num){
-        int resultado;
+        int resultado = 0;
 
         if(num > 1  && num < 20){
-            resultado = factorial(numero);
+            resultado = factorial(num);
         }else{
             System.out.println(" Corre de nuevo el programa y utiliza otro numero");
         }
