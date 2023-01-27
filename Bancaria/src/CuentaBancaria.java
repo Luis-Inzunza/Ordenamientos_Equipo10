@@ -9,37 +9,38 @@
 import java.util.Scanner;
 
 public class CuentaBancaria {
-    private double saldo = 0; 
+    private double saldo = 0;
 
-    public CuentaBancaria(){
+    public CuentaBancaria() {
         System.out.println("Vamos a crear una cuenta, por favor ingresa el saldo inicial");
         Scanner sc = new Scanner(System.in);
-        int monto = sc.nextInt();
-        
+        double monto = sc.nextDouble();
+
         saldo = monto;
     }
 
-    public void deposito (){
+    public void deposito() {
         System.out.println("inserte la cantidad que desea depositar");
         Scanner sc = new Scanner(System.in);
-        double monto = sc.nextInt();
+        double monto = sc.nextDouble();
         saldo = saldo + monto;
     }
 
-    public void retiro (){
+    public void retiro() {
         System.out.println("inserte la cantidad que desea retirar");
         Scanner sc = new Scanner(System.in);
-        double monto = sc.nextInt();
+        double monto = sc.nextDouble();
 
-        if(saldo > monto)
+        if (saldo > monto)
             saldo = saldo - monto;
     }
 
-    public double VerificarSaldo(){
+    public double VerificarSaldo() {
         return saldo;
     }
 
-    private void Menu(){
+    private void Menu() {
+        System.out.println();
         System.out.println("Que procedimiento quieres hacer? indica el numero");
         System.out.println("1.- Deposito");
         System.out.println("2.- Retirar");
@@ -47,35 +48,33 @@ public class CuentaBancaria {
         System.out.println("4.- Salir");
     }
 
-
     public static void main(String[] args) throws Exception {
         CuentaBancaria cuenta1 = new CuentaBancaria();
 
         int opcion = 1;
 
-        while(opcion != 4){
+        while (opcion != 4) {
 
-        cuenta1.Menu();
+            cuenta1.Menu();
 
-        Scanner lectura = new Scanner(System.in);
-        opcion = Integer.valueOf(lectura.nextLine());
+            Scanner lectura = new Scanner(System.in);
+            opcion = Integer.valueOf(lectura.nextLine());
 
-        if(opcion == 1){
-            cuenta1.deposito();
-            System.out.println("Su saldo a sido actualizado");
-        }
-        if(opcion == 2){
-            cuenta1.retiro();
-            System.out.println("Su saldo a sido actualizado y retirado....quien sabe donde xd");
-        }
-            if(opcion == 3){
-                System.out.println("Su saldo es "+ cuenta1.VerificarSaldo());
+            if (opcion == 1) {
+                cuenta1.deposito();
+                System.out.println("// Su saldo a sido actualizado //");
+            }
+            if (opcion == 2) {
+                cuenta1.retiro();
+                System.out.println("// Su saldo a sido actualizado y retirado....quien sabe donde xd //");
+            }
+            if (opcion == 3) {
+                System.out.println(" // Su saldo es " + cuenta1.VerificarSaldo() + " //");
             }
 
         }
         System.out.println("Gracias por usar el sistema");
-        
-    }
 
+    }
 
 }
