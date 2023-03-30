@@ -2,9 +2,10 @@ package Data;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class LectorCSV {
-    public ListNodo list = new ListNodo();
+    public LinkedList<Nodo> list = new LinkedList<>();
 
     public LectorCSV(String _direccion){
         LeerArchivo(_direccion);
@@ -20,14 +21,12 @@ public class LectorCSV {
                     String[] datos = linea.split(",");
                     Nodo temp = new Nodo(datos);
     
-                    if (list.isEmpty()) {
-                        list.insertFirst(temp);
+                    if (list.peekFirst() == null) {
+                        list.add(temp);
                     } else {
                         // Si la lista no está vacía, establece el nuevo elemento como el último elemento de la lista
                         // y actualiza las referencias al elemento anterior y al siguiente
-                        Nodo ultimo = list.peekLast();
-                        ultimo.next = temp;
-                        temp.previous = ultimo;
+                        list.add(temp);
                     }
 
                 }
