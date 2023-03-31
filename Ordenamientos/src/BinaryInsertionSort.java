@@ -1,12 +1,12 @@
-public class BinaryInsertionSort {
- 
-//  implementacion iterativa 
-    public int binarySearch(int a[], int item, int low, int high){
+import java.util.*;
+
+public class BinaryInsertionSort {  //version para listas enlazadas con datos enteros
+    public int binarySearch(LinkedList<Integer> list, int item, int low, int high) {
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if (item == a[mid])
+            if (item == list.get(mid))
                 return mid + 1;
-            else if (item > a[mid])
+            else if (item > list.get(mid))
                 low = mid + 1;
             else
                 high = mid - 1;
@@ -14,30 +14,30 @@ public class BinaryInsertionSort {
         return low;
     }
 
-    public void binaryInsertionSort(int a[], int n) {
-        int i, loc, j, k, selected;
-    
+    public void binaryInsertionSort(LinkedList<Integer> list, int n) {
+        int i, loc, j, selected;
+
         for (i = 1; i < n; ++i) {
             j = i - 1;
-            selected = a[i];
-    
+            selected = list.get(i);
+
             // encuentra la posicion donde debe ser insertado el elemento
-            loc = binarySearch(a, selected, 0, j);
-    
+            loc = binarySearch(list, selected, 0, j);
+
             // Hace un corrimiento a la derecha de los datos
             while (j >= loc) {
-                a[j + 1] = a[j];
+                list.set(j + 1, list.get(j));
                 j--;
             }
-            a[j + 1] = selected;
+            list.set(j + 1, selected);
         }
     }
 
-    public void printArray(int arr[]) {
-        int n = arr.length;
+    public void printList(List<Integer> list) {
+        int n = list.size();
         for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
- 
+            System.out.print(list.get(i) + " ");
+
         System.out.println();
     }
 }

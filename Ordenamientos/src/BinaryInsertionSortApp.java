@@ -1,4 +1,4 @@
-public class BinaryInsertionSortApp{
+public class BinaryInsertionSortApp{    //luego cambio y pongo un .app que ejcute con el codigo cambiado
     
     public static void main (String[] args) {
         int a[] = {37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54};

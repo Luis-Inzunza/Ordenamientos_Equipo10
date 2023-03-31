@@ -104,6 +104,7 @@ public class Visual {
                     bienvenida();//Queda de forma recursiva, no es muy viable
                 }else{
                     System.out.println("Porfavor, una opcion valida");
+                    Mayor_menor();
                 }
             }
         }
@@ -112,6 +113,7 @@ public class Visual {
     private void Menor_mayor(){ 
         System.out.println("1: Clase");
         System.out.println("2: Edad");
+        System.out.println("3: <- Regresar");
         Scanner scan = new Scanner(System.in);
         Integer _input = scan.nextInt();
         if(_input == 1){
@@ -124,6 +126,7 @@ public class Visual {
                     bienvenida(); //Queda de forma recursiva, no es muy viable
                 }else{
                     System.out.println("Porfavor, una opcion valida");
+                    Menor_mayor();
                 }
             }
         }
