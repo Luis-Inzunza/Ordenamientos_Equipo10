@@ -42,9 +42,9 @@ public class Nodo {
         return age;
     }
     
-
-    public String display(){
-        return passengerId+" "+survive+" "+clase+" "+nombre+" "+sex+" "+age+";" ;
+    @Override
+    public String toString(){
+        return passengerId+", "+survive+","+clase+","+nombre+","+sex+","+age;
     }
  
     private Integer insertar(String[] data, int x){

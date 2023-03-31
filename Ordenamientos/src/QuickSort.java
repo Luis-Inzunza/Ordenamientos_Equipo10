@@ -3,6 +3,8 @@ import Data.Nodo;
 
 public class QuickSort {
     private LinkedList<Nodo> lista;
+    public int cont_comparacion = 0;
+    public int cont_intercambio = 0;
 
     public QuickSort(){ }
 
@@ -105,15 +107,19 @@ public class QuickSort {
         while (i < j) {
             while (lista.get(i).getAge() >= pivote.getAge() && i < j) {
                 i++;
+                cont_comparacion++;
             }
             while (lista.get(j).getAge() < pivote.getAge() && i < j) {
                 j--;
+                cont_comparacion++;
             }
             if (i < j) {
+                cont_intercambio++;
                 intercambiar(i, j);
             }
         }
         if (lista.get(i).getAge() <= pivote.getAge()) {
+            cont_intercambio++;
             intercambiar(i, fin);
         } else {
             i++;

@@ -62,7 +62,7 @@ public class Visual {
         LectorCSV datos = new LectorCSV("src/Data/train.csv");
         Iterator<Nodo> i = datos.list.iterator();
         while(i.hasNext()){
-            System.out.println(i.next().display());
+            System.out.println(i.next().toString());
         }
     }
 
@@ -80,7 +80,7 @@ public class Visual {
         //binary.display();
 
         QuickSortApp quicksort = new QuickSortApp(3,false);
-        quicksort.display();
+        quicksort.print();
 
         //MergeSortApp merge = new MergeSortApp(3, false);
         //merge.display();
@@ -94,7 +94,7 @@ public class Visual {
         //binary.display();
 
         QuickSortApp quicksort = new QuickSortApp(3,true);
-        quicksort.display();
+        quicksort.print();
 
         //MergeSortApp merge = new MergeSortApp(3, true);
         //merge.display();
@@ -115,7 +115,7 @@ public class Visual {
             //binary.display();
 
             QuickSortApp quicksort = new QuickSortApp(1,true);
-            quicksort.display();
+            quicksort.print();
 
             //MergeSortApp merge = new MergeSortApp(1,true);
             //merge.display();
@@ -128,7 +128,7 @@ public class Visual {
                 //binary.display();
 
                 QuickSortApp quicksort = new QuickSortApp(2,true);
-                quicksort.display();
+                quicksort.print();
 
                 //MergeSortApp merge = new MergeSortApp(2,true);
                 //merge.display();
@@ -158,7 +158,7 @@ public class Visual {
             //binary.display();
 
             QuickSortApp quicksort = new QuickSortApp(1,false);
-            quicksort.display();
+            quicksort.print();
 
             //MergeSortApp merge = new MergeSortApp(1,false);
             //merge.display();
@@ -171,7 +171,7 @@ public class Visual {
                 //binary.display();
 
                 QuickSortApp quicksort = new QuickSortApp(2,false);
-                quicksort.display();
+                quicksort.print();
 
                 //MergeSortApp merge = new MergeSortApp(2,false);
                 //merge.display();

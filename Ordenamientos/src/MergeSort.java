@@ -3,6 +3,8 @@ import Data.Nodo;
 
 public class MergeSort{
 	private LinkedList<Nodo> lista = new LinkedList<>();
+   public int cont_comparacion = 0;
+   public int cont_intercambio = 0;
 
 	public LinkedList<Nodo> getLista() {
 		return lista;

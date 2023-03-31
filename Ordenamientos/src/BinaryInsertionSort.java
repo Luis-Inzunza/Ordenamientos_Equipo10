@@ -5,6 +5,8 @@ import Data.Nodo;
 public class BinaryInsertionSort { //version para listas enlazadas con datos enteros
 
     private LinkedList<Nodo> lista = new LinkedList<>();
+    public int cont_comparacion = 0;
+    public int cont_intercambio = 0;
 
 	public LinkedList<Nodo> getLista() {
 		return lista;
@@ -22,15 +24,15 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         if(MayorAmenor_invertido){
             switch (tipo) {
                 case 1:
-                    quicksortClases_Ma(0, lista.size() - 1);
+                    binaryInsertionSortClases_Ma(0, lista.size() - 1);
                     break;
     
                 case 2:
-                    quicksortEdades_Ma(0, lista.size() - 1);
+                    binaryInsertionSortEdades_Ma(0, lista.size() - 1);
                     break;
     
                 case 3:
-                    quicksortNombres_Ma(0, lista.size() - 1);
+                    binaryInsertionSortNombres_Ma(0, lista.size() - 1);
                     break;
             
                 default:
@@ -40,15 +42,15 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         }else{
             switch (tipo) {
                 case 1:
-                    quicksortClases_Me(0, lista.size() - 1);
+                    binaryInsertionSortClases_Me(0, lista.size() - 1);
                     break;
     
                 case 2:
-                    quicksortEdades_Me(0, lista.size() - 1);
+                    binaryInsertionSortEdades_Me(0, lista.size() - 1);
                     break;
     
                 case 3:
-                    quicksortNombres_Me(0, lista.size() - 1);
+                    binaryInsertionSortNombres_Me(0, lista.size() - 1);
                     break;
             
                 default:
@@ -82,7 +84,7 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         }
         return low;
     }
-
+                /*
     public void binaryInsertionSort(LinkedList<Integer> list, int n) {
         int i, loc, j, selected;
 
@@ -101,6 +103,100 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
             list.set(j + 1, selected);
         }
     }
+    */ 
+    //bIS para la Clases Mayor-Menor
+
+    public int binarySearchClases(int low, int high, int key) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (lista.get(mid).getClase().compareTo(key) == 0) {
+                return mid + 1;
+            } else if (lista.get(mid).getClase().compareTo(key) > 0) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+        //Sort Clase
+    public void binaryInsertionSortClases_Ma(int low, int high) {
+        for (int i = low + 1; i <= high; i++) {
+            Nodo temp = lista.get(i);
+            int j = i - 1;
+            int loc = binarySearchClases(low, j, temp.getClase());
+            while (j >= loc) {
+                lista.set(j + 1, lista.get(j));
+                j--;
+            }
+            lista.set(j + 1, temp);
+        }
+    }
+
+    public void binaryInsertionSortClases_Me(int low, int high) {
+        for (int i = low + 1; i <= high; i++) {
+            Nodo temp = lista.get(i);
+            int j = i - 1;
+            int loc = binarySearchClases(low, j, temp.getClase());
+            while (j <= loc) {
+                lista.set(j + 1, lista.get(j));
+                j--;
+            }
+            lista.set(j + 1, temp);
+        }
+    }
+    // Sort Edades
+    //Mayor a menor
+    private int binarySearchEdades_Ma(LinkedList<Nodo> list, int edad, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (edad == list.get(mid).getAge())
+                return mid + 1;
+            else if (edad > list.get(mid).getAge())
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return low;
+    }
+
+    private void binaryInsertionSortEdades_Ma(int low, int high) {
+        for (int i = low + 1; i <= high; i++) {
+            Nodo temp = lista.get(i);
+            int loc = binarySearchEdades_Ma(lista, temp.getAge(), low, i - 1);
+            for (int j = i - 1; j >= loc; j--) {
+                lista.set(j + 1, lista.get(j));
+            }
+            lista.set(loc, temp);
+        }
+    }
+
+    // Métodos para ordenar por edad (edades de menor a mayor)
+
+    private int binarySearchEdades_Me(LinkedList<Nodo> list, int edad, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (edad == list.get(mid).getAge())
+                return mid + 1;
+            else if (edad < list.get(mid).getAge())
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return low;
+    }
+    private void binaryInsertionSortEdades_Me(int low, int high) {
+        for (int i = low + 1; i <= high; i++) {
+            Nodo temp = lista.get(i);
+            int loc = binarySearchEdades_Ma(lista, temp.getAge(), low, i - 1);
+            for (int j = i - 1; j >= loc; j--) {
+                lista.set(j + 1, lista.get(j));
+            }
+            lista.set(loc, temp);
+        }
+    }
+    //ordenar nombres
+    
 
     public void printList(LinkedList<Integer> list) {
         int n = list.size();
@@ -109,4 +205,6 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
 
         System.out.println();
     }
+
+    
 }

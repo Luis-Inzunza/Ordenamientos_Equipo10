@@ -6,6 +6,16 @@
 
 * Rodríguez Coral Samuel David
 
+## Metodologia de trabajo
+
+Al ser un ADA bastante larga, empezamos haciendolo de manera asincrona dando nuetro avance, sin embargo fue dificil el saber realmente que hacer en ciertas situaciones sin la opinion del otro que requerian grandes cambios.
+
+Terminamos sincronizandonos al momento usando Live Share de Visal studio code y estar en llamada, cada quien trabajando en diferentes componentes/unidades con el fin de acelerar y tener un codigo de calidad.
+
+[Opinion Luis]
+
+Actualmente creo que es una de las mejores formas de trabajar, el metodo asincrono en codigo me ahce sentir inconforme, al mismo tiempo de que si uno avanza mucho, el otro no llega a entender con claridad esas parte del codigo, a diferencia del sincrono que termina siendo una manera util de pedir opiniones, consejos y saben entre los programadores que pasa entre el codigo de uno u el otro. Tmabien saben poco a poco que se va logrando y despreocuparse por eso.
+
 ## Ejecución
 
 [POR EL MOMENTO EJECUTA PRUEBAS]
