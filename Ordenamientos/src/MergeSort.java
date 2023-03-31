@@ -2,6 +2,62 @@ import java.util.LinkedList;
 import Data.Nodo;
 
 public class MergeSort{
+	private LinkedList<Nodo> lista = new LinkedList<>();
+
+	public LinkedList<Nodo> getLista() {
+		return lista;
+	}
+
+	public void setLista(LinkedList<Nodo> lista) {
+		this.lista = lista;
+	}
+
+	public void sort(int tipo, boolean MayorAmenor_invertido) {
+		if (lista.size() <= 1) {
+			return;
+		}
+	
+		if(MayorAmenor_invertido){
+			switch (tipo) {
+				case 1:
+					quicksortClases_Ma(0, lista.size() - 1);
+					break;
+	
+				case 2:
+					quicksortEdades_Ma(0, lista.size() - 1);
+					break;
+	
+				case 3:
+					quicksortNombres_Ma(0, lista.size() - 1);
+					break;
+			
+				default:
+					break;
+			} 
+	
+		}else{
+			switch (tipo) {
+				case 1:
+					quicksortClases_Me(0, lista.size() - 1);
+					break;
+	
+				case 2:
+					quicksortEdades_Me(0, lista.size() - 1);
+					break;
+	
+				case 3:
+					quicksortNombres_Me(0, lista.size() - 1);
+					break;
+			
+				default:
+					break;
+			} 
+	
+		}
+	}
+}
+
+
    private LinkedList<Integer> theList;    // ref to linked list theList
    private int nElems;                  // number of data items
 

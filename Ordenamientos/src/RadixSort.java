@@ -2,7 +2,21 @@
 import java.io.*;
 import java.util.*;
 
+import Data.Nodo;
+
 public class RadixSort {
+	private LinkedList<Nodo> lista = new LinkedList<>();
+
+	public RadixSort(){ }
+
+	public LinkedList<Nodo> getLista() {
+		return lista;
+	}
+
+	public void setLista(LinkedList<Nodo> lista) {
+		this.lista = lista;
+	}
+
     private long[] theArray;          // ref to array theArray
     private int nElems;               // number of data items
     //-----------------------------------------------------------
@@ -73,6 +87,52 @@ public class RadixSort {
 		for (int exp = 1; m / exp > 0; exp *= 10)
 			countSort(exp);
 	}
+
+	public void sort(int tipo, boolean MayorAmenor_invertido) {
+		if (lista.size() <= 1) {
+			return;
+		}
+	
+		if(MayorAmenor_invertido){
+			switch (tipo) {
+				case 1:
+					quicksortClases_Ma(0, lista.size() - 1);
+					break;
+	
+				case 2:
+					quicksortEdades_Ma(0, lista.size() - 1);
+					break;
+	
+				case 3:
+					quicksortNombres_Ma(0, lista.size() - 1);
+					break;
+			
+				default:
+					break;
+			} 
+	
+		}else{
+			switch (tipo) {
+				case 1:
+					quicksortClases_Me(0, lista.size() - 1);
+					break;
+	
+				case 2:
+					quicksortEdades_Me(0, lista.size() - 1);
+					break;
+	
+				case 3:
+					quicksortNombres_Me(0, lista.size() - 1);
+					break;
+			
+				default:
+					break;
+			} 
+	
+		}
+	}
 }
 /* This code is contributed by Devesh Agrawal */
+
+
 

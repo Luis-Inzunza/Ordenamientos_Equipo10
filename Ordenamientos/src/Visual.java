@@ -6,7 +6,6 @@ import Data.LectorCSV;
 import Data.Nodo;
 
 public class Visual {
-    private QuickSort sort = new QuickSort();
     
     public Visual(){ }
 
@@ -31,22 +30,18 @@ public class Visual {
                 break;
             
             case 1:
-                System.out.println("elegio 1");
                 Alfabeticamente();
                 break;
             
             case 2:
-                System.out.println("elegio 2");
                 Alfa_inverso();
                 break;
             
             case 3:
-                System.out.println("elegio 3");
                 orden(true);
                 break;
 
             case 4:
-                System.out.println("elegio 4");
                 orden(false);
                 break;
 
@@ -81,25 +76,31 @@ public class Visual {
     }
 
     private void Alfabeticamente(){
-        LectorCSV datos = new LectorCSV("src/Data/train.csv");
-        sort.setLista(datos.list);
-        sort.sort(3,false);
-        Iterator<Nodo> i = sort.getLista().iterator();
-        while(i.hasNext()){
-            System.out.println(i.next().display());
-        }
-        //LectorCSV datos = new LectorCSV("src/Data/train.csv");
-        //Llevarlo a los algoritmos
+        //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(3, false);
+        //binary.display();
+
+        QuickSortApp quicksort = new QuickSortApp(3,false);
+        quicksort.display();
+
+        //MergeSortApp merge = new MergeSortApp(3, false);
+        //merge.display();
+
+        //RadixSortApp radix = new RadixSortApp(3, false);
+        //radix.display();
+
     }
     private void Alfa_inverso(){
-        LectorCSV datos = new LectorCSV("src/Data/train.csv");
-        sort.setLista(datos.list);
-        sort.sort(3,true);
-        Iterator<Nodo> i = sort.getLista().iterator();
-        while(i.hasNext()){
-            System.out.println(i.next().display());
-        }
-        //Llevarlo a los algoritmos
+        //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(3, true);
+        //binary.display();
+
+        QuickSortApp quicksort = new QuickSortApp(3,true);
+        quicksort.display();
+
+        //MergeSortApp merge = new MergeSortApp(3, true);
+        //merge.display();
+
+        //RadixSortApp radix = new RadixSortApp(3, true);
+        //radix.display();
     }
 
     private void Mayor_menor(){ 
@@ -108,26 +109,35 @@ public class Visual {
         System.out.println("3: <- Regresar");
         Scanner scan = new Scanner(System.in);
         Integer _input = scan.nextInt();
+
         if(_input == 1){
-            LectorCSV datos = new LectorCSV("src/Data/train.csv");
-            sort.setLista(datos.list);
-            sort.sort(1,true);
-            Iterator<Nodo> i = sort.getLista().iterator();
-            while(i.hasNext()){
-                System.out.println(i.next().display());
-            }
+            //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(1,true);
+            //binary.display();
+
+            QuickSortApp quicksort = new QuickSortApp(1,true);
+            quicksort.display();
+
+            //MergeSortApp merge = new MergeSortApp(1,true);
+            //merge.display();
+
+            //RadixSortApp radix = new RadixSortApp(1,true);
+            //radix.display();
         }else{
             if(_input == 2){
-                LectorCSV datos = new LectorCSV("src/Data/train.csv");
-                sort.setLista(datos.list);
-                sort.sort(2,true);
-                Iterator<Nodo> i = sort.getLista().iterator();
-                while(i.hasNext()){
-                    System.out.println(i.next().display());
-                }
+                //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,true);
+                //binary.display();
+
+                QuickSortApp quicksort = new QuickSortApp(2,true);
+                quicksort.display();
+
+                //MergeSortApp merge = new MergeSortApp(2,true);
+                //merge.display();
+
+                //RadixSortApp radix = new RadixSortApp(2,true);
+                //radix.display();
             }else{
                 if(_input == 3){
-                    bienvenida(); //Queda de forma recursiva, no es muy viable
+                    bienvenida();
                 }else{
                     System.out.println("Porfavor, una opcion valida");
                     Mayor_menor();
@@ -142,27 +152,35 @@ public class Visual {
         System.out.println("3: <- Regresar");
         Scanner scan = new Scanner(System.in);
         Integer _input = scan.nextInt();
+
         if(_input == 1){
-            LectorCSV datos = new LectorCSV("src/Data/train.csv");
-            sort.setLista(datos.list);
-            sort.sort(1,false);
-            Iterator<Nodo> i = sort.getLista().iterator();
-            while(i.hasNext()){
-                System.out.println(i.next().display());
-            }
-            //Llevarlo a los algoritmos
+            //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(1,false);
+            //binary.display();
+
+            QuickSortApp quicksort = new QuickSortApp(1,false);
+            quicksort.display();
+
+            //MergeSortApp merge = new MergeSortApp(1,false);
+            //merge.display();
+
+            //RadixSortApp radix = new RadixSortApp(1,false);
+            //radix.display();
         }else{
             if(_input == 2){
-                LectorCSV datos = new LectorCSV("src/Data/train.csv");
-                sort.setLista(datos.list);
-                sort.sort(2,false);
-                Iterator<Nodo> i = sort.getLista().iterator();
-                while(i.hasNext()){
-                    System.out.println(i.next().display());
-                }
+                //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,false);
+                //binary.display();
+
+                QuickSortApp quicksort = new QuickSortApp(2,false);
+                quicksort.display();
+
+                //MergeSortApp merge = new MergeSortApp(2,false);
+                //merge.display();
+
+                //RadixSortApp radix = new RadixSortApp(2,false);
+                //radix.display();
             }else{
                 if(_input == 3){
-                    bienvenida(); //Queda de forma recursiva, no es muy viable
+                    bienvenida();
                 }else{
                     System.out.println("Porfavor, una opcion valida");
                     Menor_mayor();

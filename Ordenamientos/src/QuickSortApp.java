@@ -1,37 +1,35 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
+import Data.LectorCSV;
+import Data.Nodo;
+
 public class QuickSortApp {
-    public static void main(String[] args) {
-        LinkedList<Integer> lista2 = new LinkedList<Integer>();
-        LinkedList<String> listaString = new LinkedList<String>();
-        //qs con datos numericos
-        lista2.add(5);
-        lista2.add(24);
-        lista2.add(15);
-        lista2.add(1);
-        lista2.add(97);
+    private QuickSort quick = new QuickSort();
+    private int tipo;
+    private boolean MayorAmenor_invertido;
 
-       //qs para datos alfanumericos
-        listaString.add("juan");
-        listaString.add("alberto");
-        listaString.add("basto");
-        listaString.add("castro");
+    public QuickSortApp(int _tipo, boolean _MayorAmenor_invertido){ 
+        this.tipo = _tipo;
+        this.MayorAmenor_invertido = _MayorAmenor_invertido;
+        sort();
+    }
 
-        QuickSort qSort = new QuickSort(lista2); //qs normal
-        StringQuickSort stringQS = new StringQuickSort(listaString);  //qs de cadenas
+    private void sort(){
+        LectorCSV datos = new LectorCSV("src/Data/train.csv");
+        quick.setLista(datos.list);
+        quick.sort(tipo, MayorAmenor_invertido);
+    }
 
-       
+    public LinkedList getList(){
+        return quick.getLista();
+    }
 
-        qSort.display();                 // display items
-        
-        qSort.recQSort(0,lista2.size()-1);         //low posicion inicial en la lista para revisar y el otro el limite 
- 
-        qSort.display();                // display items
-
-        stringQS.display();
-
-        stringQS.recQSort(0, listaString.size()-1);
-        stringQS.display();
+    public void display(){
+        Iterator<Nodo> i = getList().iterator();
+        while(i.hasNext()){
+            System.out.println(i.next().display());
+        }
     }
 }
