@@ -42,4 +42,21 @@ Nueva Data ordenada: *Insertar nombre con terminacion .csv*
     * mayor a menor
     * menor a mayor
 
+* Actualizacion: Los algoritmos de ordenamiento se encuentran ya adaptados para trabajar con listas doblemente ligadas
+sin embargo en el caso de los algoritmos BinaryInsertionSort y MergeSort se trabaja todavia con el dato solicitado.
+Ya sea una LinkedList de datos String o Int, pero no de tipo nodo, esto debe cambiar a futuro, sea las 2 clases mencionadas
+o la clase quickSort, a discusion
+
+* Se tiene ya un metodo para ordenar las columnas con datos alfanumericos, el ejemplo esta en la clase StringQuickSort
+con la clase esMayor(cambiar luego el nombre) siendo la encargada de comparar 2 cadenas y luego siendo usada para ordenar
+en orden alfabetico normal o inverso una lista de datos String
+
+* Pendientes : 
+    * Asegurarse del funcionamiento de los algoritmos para los datos
+    * RadixSort
+    * Metricas
+    * Creacion de los doc CSV
+    * Javadoc
+* pd: algunas partes del codigo que mande estan haciendo saltar errores, pero desconozco el motivo ya que en mi lap funcionan bien, revisar en local si te funcionan
+
 ### Fuentes de ayuda

@@ -24,9 +24,30 @@ public class Nodo {
         return age;
     }
 
+    public Integer getClase() {
+        return clase;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
     public Double getFare() {
         return fare;
     }
+
+    public Integer getPassengerId() {
+        return passengerId;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+    
+    public Integer getSurvive() {
+        return survive;
+    }
+    
 
     public String display(){
         return passengerId+" "+survive+" "+clase+" "+nombre+" "+sex+" "+age+" "+fare+";" ;

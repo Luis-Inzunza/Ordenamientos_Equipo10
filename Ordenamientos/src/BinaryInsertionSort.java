@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.LinkedList;
 
 public class BinaryInsertionSort {  //version para listas enlazadas con datos enteros
     public int binarySearch(LinkedList<Integer> list, int item, int low, int high) {
@@ -33,7 +33,7 @@ public class BinaryInsertionSort {  //version para listas enlazadas con datos en
         }
     }
 
-    public void printList(List<Integer> list) {
+    public void printList(LinkedList<Integer> list) {
         int n = list.size();
         for (int i = 0; i < n; ++i)
             System.out.print(list.get(i) + " ");

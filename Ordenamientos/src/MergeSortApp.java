@@ -1,25 +1,19 @@
-public class MergeSortApp{
-   public static void main(String[] args){
-      int maxSize = 100;             // array size
-      MergeSort arr = new MergeSort(maxSize);     // create the array
+import java.util.LinkedList;
 
-      arr.insert(64);                // insert items
-      arr.insert(21);
-      arr.insert(33);
-      arr.insert(70);
-      arr.insert(12);
-      arr.insert(85);
-      arr.insert(44);
-      arr.insert(3);
-      arr.insert(99);
-      arr.insert(0);
-      arr.insert(108);
-      arr.insert(36);
-
-      arr.display();                 // display items
-
-      arr.mergeSort();               // merge sort the array
-
-      arr.display();                 // display items again
-    }  // end main()
-}  // end class MergeSortApp
+public class MergeSortApp {
+   public static void main(String[] args) {
+      LinkedList<Integer> theList = new LinkedList<Integer>();
+      theList.add(9);
+      theList.add(7);
+      theList.add(5);
+      theList.add(3);
+      theList.add(1);
+      MergeSort sorter = new MergeSort();
+      for (int i = 0; i < theList.size(); i++) {
+         sorter.insert(theList.get(i));
+      }
+      sorter.display();
+      sorter.mergeSort();
+      sorter.display();
+   }
+}

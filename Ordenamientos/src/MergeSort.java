@@ -1,29 +1,33 @@
-public class MergeSort{
-   private long[] theArray;          // ref to array theArray
-   private int nElems;               // number of data items
+import java.util.LinkedList;
+import Data.Nodo;
 
-   public MergeSort(int max)   {
-      theArray = new long[max];      // create array
+public class MergeSort{
+   private LinkedList<Integer> theList;    // ref to linked list theList
+   private int nElems;                  // number of data items
+
+   public MergeSort() {
+      theList = new LinkedList<>(); // create linked list
       nElems = 0;
    }
-   
-   public void insert(long value){
-      theArray[nElems] = value;      // insert it
-      nElems++;                      // increment size
+
+   public void insert(int value) {
+      theList.add(value);               // insert value
+      nElems++;                         // increment size
    }
 
    public void display() {
-      for(int j=0; j<nElems; j++)    // for each element,
-         System.out.print(theArray[j] + " ");  // display it
+      for(int value : theList) {       // for each element
+         System.out.print(value + " "); // display it
+      }
       System.out.println("");
    }
 
    public void mergeSort() {
-      long[] workSpace = new long[nElems];
+      LinkedList<Integer> workSpace = new LinkedList<>();
       recMergeSort(workSpace, 0, nElems-1);
    }
 
-   private void recMergeSort(long[] workSpace, int lowerBound, int upperBound){
+   private void recMergeSort(LinkedList<Integer> workSpace, int lowerBound, int upperBound) {
       if(lowerBound == upperBound)            // if range is 1,
          return;                              // no use sorting
       else {                                    
@@ -34,25 +38,27 @@ public class MergeSort{
       }  // end else
    }  // end recMergeSort()
 
-   private void merge(long[] workSpace, int lowPtr, int highPtr, int upperBound) {
+   private void merge(LinkedList<Integer> workSpace, int lowPtr, int highPtr, int upperBound) {
       int j = 0;                             // workspace index
       int lowerBound = lowPtr;
       int mid = highPtr-1;
       int n = upperBound-lowerBound+1;       // # of items
 
       while(lowPtr <= mid && highPtr <= upperBound)
-         if( theArray[lowPtr] < theArray[highPtr] )
-            workSpace[j++] = theArray[lowPtr++];
+         if(theList.get(lowPtr) < theList.get(highPtr))
+            workSpace.add(theList.get(lowPtr++));
          else
-            workSpace[j++] = theArray[highPtr++];
+            workSpace.add(theList.get(highPtr++));
 
       while(lowPtr <= mid)
-         workSpace[j++] = theArray[lowPtr++];
+         workSpace.add(theList.get(lowPtr++));
 
       while(highPtr <= upperBound)
-         workSpace[j++] = theArray[highPtr++];
+         workSpace.add(theList.get(highPtr++));
 
       for(j=0; j<n; j++)
-         theArray[lowerBound+j] = workSpace[j];
+         theList.set(lowerBound+j, workSpace.get(j));
+      workSpace.clear();
    }
 }
+

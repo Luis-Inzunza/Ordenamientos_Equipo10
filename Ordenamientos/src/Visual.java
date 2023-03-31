@@ -81,11 +81,24 @@ public class Visual {
     }
 
     private void Alfabeticamente(){
+        LectorCSV datos = new LectorCSV("src/Data/train.csv");
+        sort.setLista(datos.list);
+        sort.sort(3,false);
+        Iterator<Nodo> i = sort.getLista().iterator();
+        while(i.hasNext()){
+            System.out.println(i.next().display());
+        }
         //LectorCSV datos = new LectorCSV("src/Data/train.csv");
         //Llevarlo a los algoritmos
     }
     private void Alfa_inverso(){
         LectorCSV datos = new LectorCSV("src/Data/train.csv");
+        sort.setLista(datos.list);
+        sort.sort(3,true);
+        Iterator<Nodo> i = sort.getLista().iterator();
+        while(i.hasNext()){
+            System.out.println(i.next().display());
+        }
         //Llevarlo a los algoritmos
     }
 
@@ -96,13 +109,25 @@ public class Visual {
         Scanner scan = new Scanner(System.in);
         Integer _input = scan.nextInt();
         if(_input == 1){
-            //Llevarlo a los algoritmos
+            LectorCSV datos = new LectorCSV("src/Data/train.csv");
+            sort.setLista(datos.list);
+            sort.sort(1,true);
+            Iterator<Nodo> i = sort.getLista().iterator();
+            while(i.hasNext()){
+                System.out.println(i.next().display());
+            }
         }else{
             if(_input == 2){
-                
+                LectorCSV datos = new LectorCSV("src/Data/train.csv");
+                sort.setLista(datos.list);
+                sort.sort(2,true);
+                Iterator<Nodo> i = sort.getLista().iterator();
+                while(i.hasNext()){
+                    System.out.println(i.next().display());
+                }
             }else{
                 if(_input == 3){
-                    bienvenida();//Queda de forma recursiva, no es muy viable
+                    bienvenida(); //Queda de forma recursiva, no es muy viable
                 }else{
                     System.out.println("Porfavor, una opcion valida");
                     Mayor_menor();
@@ -118,12 +143,19 @@ public class Visual {
         Scanner scan = new Scanner(System.in);
         Integer _input = scan.nextInt();
         if(_input == 1){
+            LectorCSV datos = new LectorCSV("src/Data/train.csv");
+            sort.setLista(datos.list);
+            sort.sort(1,false);
+            Iterator<Nodo> i = sort.getLista().iterator();
+            while(i.hasNext()){
+                System.out.println(i.next().display());
+            }
             //Llevarlo a los algoritmos
         }else{
             if(_input == 2){
                 LectorCSV datos = new LectorCSV("src/Data/train.csv");
                 sort.setLista(datos.list);
-                sort.sort();
+                sort.sort(2,false);
                 Iterator<Nodo> i = sort.getLista().iterator();
                 while(i.hasNext()){
                     System.out.println(i.next().display());
