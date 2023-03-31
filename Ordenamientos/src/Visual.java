@@ -6,6 +6,7 @@ import Data.LectorCSV;
 import Data.Nodo;
 
 public class Visual {
+    private QuickSort sort = new QuickSort();
     
     public Visual(){ }
 
@@ -98,7 +99,7 @@ public class Visual {
             //Llevarlo a los algoritmos
         }else{
             if(_input == 2){
-                //Llevarlo a los algoritmos
+                
             }else{
                 if(_input == 3){
                     bienvenida();//Queda de forma recursiva, no es muy viable
@@ -120,7 +121,13 @@ public class Visual {
             //Llevarlo a los algoritmos
         }else{
             if(_input == 2){
-                //Llevarlo a los algoritmos
+                LectorCSV datos = new LectorCSV("src/Data/train.csv");
+                sort.setLista(datos.list);
+                sort.sort();
+                Iterator<Nodo> i = sort.getLista().iterator();
+                while(i.hasNext()){
+                    System.out.println(i.next().display());
+                }
             }else{
                 if(_input == 3){
                     bienvenida(); //Queda de forma recursiva, no es muy viable
