@@ -11,14 +11,11 @@ import Data.Nodo;
 
 public class MergeSortApp {
    private MergeSort quick = new MergeSort();
-   private int tipo;
-   private boolean MayorAmenor_invertido;
    private long tiempoTotal = 0;
 
    public MergeSortApp(int _tipo, boolean _MayorAmenor_invertido){
-       this.tipo = _tipo;
-       this.MayorAmenor_invertido = _MayorAmenor_invertido;
-       
+       quick.setTipo(_tipo);
+       quick.setMayorAmenor_invertido(_MayorAmenor_invertido);
        long inicio = System.currentTimeMillis();
        sort();
        long fin = System.currentTimeMillis();
@@ -27,8 +24,7 @@ public class MergeSortApp {
 
    private void sort(){
        LectorCSV datos = new LectorCSV("src/Data/train.csv");
-       quick.setLista(datos.list);
-       quick.sort(tipo, MayorAmenor_invertido);
+       quick.mergesort(datos.list);
     }
 
    public LinkedList getList(){
@@ -93,7 +89,9 @@ public class MergeSortApp {
 
 
    ///////////////////////////////////////////////////////////////
-   public static void main(String[] args) {
+
+   /*
+    *    public static void main(String[] args) {
       LinkedList<Integer> theList = new LinkedList<Integer>();
       theList.add(9);
       theList.add(7);
@@ -108,4 +106,5 @@ public class MergeSortApp {
       sorter.mergeSort();
       sorter.display();
    }
+    */
 }

@@ -117,8 +117,8 @@ public class Visual {
             QuickSortApp quicksort = new QuickSortApp(1,true);
             quicksort.print();
 
-            //MergeSortApp merge = new MergeSortApp(1,true);
-            //merge.display();
+            MergeSortApp merge = new MergeSortApp(1,true);
+            merge.display();
 
             //RadixSortApp radix = new RadixSortApp(1,true);
             //radix.display();
@@ -130,8 +130,8 @@ public class Visual {
                 QuickSortApp quicksort = new QuickSortApp(2,true);
                 quicksort.print();
 
-                //MergeSortApp merge = new MergeSortApp(2,true);
-                //merge.display();
+                MergeSortApp merge = new MergeSortApp(2,true);
+                merge.display();
 
                 //RadixSortApp radix = new RadixSortApp(2,true);
                 //radix.display();

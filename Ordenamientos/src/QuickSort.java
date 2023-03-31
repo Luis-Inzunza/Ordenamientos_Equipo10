@@ -133,15 +133,19 @@ public class QuickSort {
         while (i < j) {
             while (lista.get(i).getClase() >= pivote.getClase() && i < j) {
                 i++;
+                cont_comparacion++;
             }
             while (lista.get(j).getClase() < pivote.getClase() && i > j) {
                 j--;
+                cont_comparacion++;
             }
             if (i < j) {
+                cont_intercambio++;
                 intercambiar(i, j);
             }
         }
         if (lista.get(i).getClase() <= pivote.getClase()) {
+            cont_intercambio++;
             intercambiar(i, fin);
         } else {
             i++;
@@ -155,10 +159,12 @@ public class QuickSort {
         while (i < j) {
             if (esMayor(lista.get(j), pivote)) {  // si elemento en j es mayor que el pivote
                 i++;
+                cont_intercambio++;
                 intercambiar(i, j);
             }
         }
         if (lista.get(i).getAge() >= pivote.getAge()) {
+            cont_intercambio++;
             intercambiar(i, fin);
         } else {
             i++;
@@ -208,15 +214,19 @@ public class QuickSort {
         while (i < j) {
             while (lista.get(i).getAge() < pivote.getAge() && i < j) {
                 i++;
+                cont_comparacion++;
             }
             while (lista.get(j).getAge() >= pivote.getAge() && i < j) {
                 j--;
+                cont_comparacion++;
             }
             if (i < j) {
+                cont_intercambio++;
                 intercambiar(i, j);
             }
         }
         if (lista.get(i).getAge() >= pivote.getAge()) {
+            cont_intercambio++;
             intercambiar(i, fin);
         } else {
             i++;
@@ -230,15 +240,19 @@ public class QuickSort {
         while (i < j) {
             while (lista.get(i).getClase() < pivote.getClase() && i < j) {
                 i++;
+                cont_comparacion++;
             }
             while (lista.get(j).getClase() >= pivote.getClase() && i < j) {
                 j--;
+                cont_comparacion++;
             }
             if (i < j) {
+                cont_intercambio++;
                 intercambiar(i, j);
             }
         }
         if (lista.get(i).getClase() >= pivote.getClase()) {
+            cont_intercambio++;
             intercambiar(i, fin);
         } else {
             i++;
@@ -246,21 +260,47 @@ public class QuickSort {
         return i;
     }
 
-    public int particionarNombres_Me(int inicio, int fin) {
-        int i = inicio;
-        int j = fin;
-        while (i < j) {
-            if (esMayor(lista.get(j), lista.get(i))) {  // si elemento en j es mayor que el pivote
-                i++;
-                intercambiar(i, j);
-            }
-            else {
+    public int particionarNombres_Ma(int inicio, int fin) {
+    int i = inicio - 1;
+    int j = fin + 1;
+    Nodo pivote = lista.get(inicio + (fin - inicio) / 2);
+    while (true) {
+        do {
             i++;
-        }
-        }
+        } while (esMenor(lista.get(i), pivote)); // Cambio a esMenor
         
-        return i;
+        do {
+            j--;
+        } while (esMenor(pivote, lista.get(j))); // Cambio a esMenor
+        
+        if (i >= j) {
+            return j;
+        }
+        cont_intercambio++;
+        intercambiar(i, j);
     }
+}
+    public int particionarNombres_Me(int inicio, int fin) {
+    int i = inicio - 1;
+    int j = fin + 1;
+    Nodo pivote = lista.get(inicio + (fin - inicio) / 2);
+    while (true) {
+        do {
+            
+            i++;
+        } while (esMayor(lista.get(i), pivote));
+        
+        do {
+            j--;
+        } while (esMayor(pivote, lista.get(j)));
+        
+        if (i >= j) {
+            return j;
+        }
+        cont_intercambio++;
+        intercambiar(i, j);
+    }
+}
 
 
     private void intercambiar(int i, int j) {
@@ -274,9 +314,27 @@ public class QuickSort {
         int i = 0;
         while (i < a.getNombre().length() && i < b.getNombre().length()) {
             if (a.getNombre().charAt(i) > b.getNombre().charAt(i)) {
+                cont_comparacion++;
                 return false;
             } else if (a.getNombre().charAt(i) < b.getNombre().charAt(i)) {
+                cont_comparacion++;
                 return true;
+            }
+            i++;
+        }
+        return a.getNombre().length() > b.getNombre().length();
+    }
+
+
+    public boolean esMenor(Nodo a, Nodo b) {
+        int i = 0;
+        while (i < a.getNombre().length() && i < b.getNombre().length()) {
+            if (a.getNombre().charAt(i) > b.getNombre().charAt(i)) {
+                cont_comparacion++;
+                return true;
+            } else if (a.getNombre().charAt(i) < b.getNombre().charAt(i)) {
+                cont_comparacion++;
+                return false;
             }
             i++;
         }

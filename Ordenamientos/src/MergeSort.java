@@ -3,6 +3,8 @@ import Data.Nodo;
 
 public class MergeSort{
 	private LinkedList<Nodo> lista = new LinkedList<>();
+   private int tipo = 0;
+   private boolean MayorAmenor_invertido;
    public int cont_comparacion = 0;
    public int cont_intercambio = 0;
 
@@ -14,7 +16,39 @@ public class MergeSort{
 		this.lista = lista;
 	}
 
-	public void sort(int tipo, boolean MayorAmenor_invertido) {
+   public void setTipo(int tipo) {
+      this.tipo = tipo;
+   }
+
+   public void setMayorAmenor_invertido(boolean mayorAmenor_invertido) {
+      MayorAmenor_invertido = mayorAmenor_invertido;
+   }
+
+
+
+
+   public void mergesort(LinkedList<Nodo> lista){
+      if (lista.size() > 1) {
+         // Divide la lista en dos mitades
+         LinkedList<Nodo> mitadIzquierda = new LinkedList<>();
+         LinkedList<Nodo> mitadDerecha = new LinkedList<>();
+         int mitad = lista.size() / 2;
+         for (int i = 0; i < mitad; i++) {
+             mitadIzquierda.add(lista.get(i));
+         }
+         for (int i = mitad; i < lista.size(); i++) {
+             mitadDerecha.add(lista.get(i));
+         }
+
+         // Ordena las dos mitades de manera recursiva
+         mergesort(mitadIzquierda);
+         mergesort(mitadDerecha);
+         sort(mitadIzquierda, mitadDerecha);
+         setLista(lista);
+      }
+   }
+
+	public void sort(LinkedList<Nodo> izquierda, LinkedList<Nodo> derecha) {
 		if (lista.size() <= 1) {
 			return;
 		}
@@ -22,15 +56,15 @@ public class MergeSort{
 		if(MayorAmenor_invertido){
 			switch (tipo) {
 				case 1:
-					quicksortClases_Ma(0, lista.size() - 1);
+					mergesortClases_Ma(izquierda, derecha);
 					break;
 	
 				case 2:
-					quicksortEdades_Ma(0, lista.size() - 1);
+					mergesortEdades_Ma(izquierda, derecha);
 					break;
 	
 				case 3:
-					quicksortNombres_Ma(0, lista.size() - 1);
+					mergesortNombres_Ma(izquierda, derecha);
 					break;
 			
 				default:
@@ -40,15 +74,15 @@ public class MergeSort{
 		}else{
 			switch (tipo) {
 				case 1:
-					quicksortClases_Me(0, lista.size() - 1);
+					mergesortClases_Me(izquierda, derecha);
 					break;
 	
 				case 2:
-					quicksortEdades_Me(0, lista.size() - 1);
+					mergesortEdades_Me(izquierda, derecha);
 					break;
 	
 				case 3:
-					quicksortNombres_Me(0, lista.size() - 1);
+					mergesortNombres_Me(izquierda, derecha);
 					break;
 			
 				default:
@@ -57,8 +91,172 @@ public class MergeSort{
 	
 		}
 	}
+
+
+   private void mergesortEdades_Ma(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      if (mitadIzquierda != null && mitadDerecha != null){
+         int i = 1;
+         int j = 0;
+         int k = 0;
+         while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+            if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+               lista.set(k, mitadIzquierda.get(i));
+               i++;
+            } else {
+               lista.set(k, mitadDerecha.get(j));
+               j++;
+            }
+            k++;
+         }
+         while (i <= mitadIzquierda.size()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+            k++;
+         }
+         while (j <= mitadDerecha.size()) {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+            k++;
+         }
+      }
+   }
+
+   private void mergesortClases_Ma(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+         } else {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+         }
+         k++;
+      }
+      while (i < mitadIzquierda.size()) {
+         lista.set(k, mitadIzquierda.get(i));
+         i++;
+         k++;
+      }
+      while (j < mitadDerecha.size()) {
+         lista.set(k, mitadDerecha.get(j));
+         j++;
+         k++;
+      }
+   }
+
+   private void mergesortNombres_Ma(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+         } else {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+         }
+         k++;
+      }
+      while (i < mitadIzquierda.size()) {
+         lista.set(k, mitadIzquierda.get(i));
+         i++;
+         k++;
+      }
+      while (j < mitadDerecha.size()) {
+         lista.set(k, mitadDerecha.get(j));
+         j++;
+         k++;
+      }
+   }
+
+   private void mergesortEdades_Me(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+         } else {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+         }
+         k++;
+      }
+      while (i < mitadIzquierda.size()) {
+         lista.set(k, mitadIzquierda.get(i));
+         i++;
+         k++;
+      }
+      while (j < mitadDerecha.size()) {
+         lista.set(k, mitadDerecha.get(j));
+         j++;
+         k++;
+      }
+   }
+
+   private void mergesortClases_Me(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+         } else {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+         }
+         k++;
+      }
+      while (i < mitadIzquierda.size()) {
+         lista.set(k, mitadIzquierda.get(i));
+         i++;
+         k++;
+      }
+      while (j < mitadDerecha.size()) {
+         lista.set(k, mitadDerecha.get(j));
+         j++;
+         k++;
+      }
+   }
+
+   private void mergesortNombres_Me(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
+      int i = 0;
+      int j = 0;
+      int k = 0;
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+            lista.set(k, mitadIzquierda.get(i));
+            i++;
+         } else {
+            lista.set(k, mitadDerecha.get(j));
+            j++;
+         }
+         k++;
+      }
+      while (i < mitadIzquierda.size()) {
+         lista.set(k, mitadIzquierda.get(i));
+         i++;
+         k++;
+      }
+      while (j < mitadDerecha.size()) {
+         lista.set(k, mitadDerecha.get(j));
+         j++;
+         k++;
+      }
+   }
+
+
+   
 }
 
+/*
+ * 
 
    private LinkedList<Integer> theList;    // ref to linked list theList
    private int nElems;                  // number of data items
@@ -119,4 +317,4 @@ public class MergeSort{
       workSpace.clear();
    }
 }
-
+ */

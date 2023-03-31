@@ -196,7 +196,57 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         }
     }
     //ordenar nombres
-    
+    // Alfabetico
+   
+}
+    public static int binarySearchNombres_Ma(LinkedList<Nodo> lista, String elemento, int low, int high) {//inicio es high, fin es low
+        if (low <= high) {
+            if (elemento.compareTo(lista.get(high).getNombre()) > 0) {
+                return high + 1;
+            } else {
+                return high;
+            }
+        }
+
+        int mid = (high + low) / 2;
+
+        if (elemento.compareTo(lista.get(mid).getNombre()) == 0) {
+            return mid + 1;
+        }
+
+        if (elemento.compareTo(lista.get(mid).getNombre()) > 0) {
+            return binarySearchNombres_Ma(lista, elemento, mid + 1, low);
+        } else {
+            return binarySearchNombres_Ma(lista, elemento, high, mid - 1);
+        }
+    }
+
+private void binaryInsertionSortNombres_Ma(int low, int high) {
+    for (int i = low + 1; i <= high; i++) {
+        Nodo temp = lista.get(i);
+        int loc = binarySearchNombres_Ma(lista, temp.getNombre(), low, i - 1);
+        for (int j = i - 1; j >= loc; j--) {
+            lista.set(j + 1, lista.get(j));
+        }
+        lista.set(loc, temp);
+    }
+}
+public boolean esMayor(Nodo a, Nodo b) {
+        int i = 0;
+        while (i < a.getNombre().length() && i < b.getNombre().length()) {
+            if (a.getNombre().charAt(i) > b.getNombre().charAt(i)) {
+                cont_comparacion++;
+                return false;
+            } else if (a.getNombre().charAt(i) < b.getNombre().charAt(i)) {
+                cont_comparacion++;
+                return true;
+            }
+            i++;
+        }
+        return a.getNombre().length() > b.getNombre().length();
+    }
+
+
 
     public void printList(LinkedList<Integer> list) {
         int n = list.size();
