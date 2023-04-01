@@ -32,7 +32,7 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
                     break;
     
                 case 3:
-                    binaryInsertionSortNombres_Ma(0, lista.size() - 1);
+                    binaryInsertionSortNombres_Ma();
                     break;
             
                 default:
@@ -59,19 +59,7 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
     public int binarySearch(LinkedList<Integer> list, int item, int low, int high) {
         while (low <= high) {
             int mid = low + (high - low) / 2;
@@ -84,26 +72,6 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         }
         return low;
     }
-                /*
-    public void binaryInsertionSort(LinkedList<Integer> list, int n) {
-        int i, loc, j, selected;
-
-        for (i = 1; i < n; ++i) {
-            j = i - 1;
-            selected = list.get(i);
-
-            // encuentra la posicion donde debe ser insertado el elemento
-            loc = binarySearch(list, selected, 0, j);
-
-            // Hace un corrimiento a la derecha de los datos
-            while (j >= loc) {
-                list.set(j + 1, list.get(j));
-                j--;
-            }
-            list.set(j + 1, selected);
-        }
-    }
-    */ 
     //bIS para la Clases Mayor-Menor
 
     public int binarySearchClases(int low, int high, int key) {
@@ -146,91 +114,109 @@ public class BinaryInsertionSort { //version para listas enlazadas con datos ent
         }
     }
     // Sort Edades
-    //Mayor a menor
-    private int binarySearchEdades_Ma(LinkedList<Nodo> list, int edad, int low, int high) {
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (edad == list.get(mid).getAge())
-                return mid + 1;
-            else if (edad > list.get(mid).getAge())
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-        return low;
-    }
-
-    private void binaryInsertionSortEdades_Ma(int low, int high) {
-        for (int i = low + 1; i <= high; i++) {
-            Nodo temp = lista.get(i);
-            int loc = binarySearchEdades_Ma(lista, temp.getAge(), low, i - 1);
-            for (int j = i - 1; j >= loc; j--) {
-                lista.set(j + 1, lista.get(j));
-            }
-            lista.set(loc, temp);
-        }
-    }
-
-    // Métodos para ordenar por edad (edades de menor a mayor)
-
-    private int binarySearchEdades_Me(LinkedList<Nodo> list, int edad, int low, int high) {
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (edad == list.get(mid).getAge())
-                return mid + 1;
-            else if (edad < list.get(mid).getAge())
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-        return low;
-    }
-    private void binaryInsertionSortEdades_Me(int low, int high) {
-        for (int i = low + 1; i <= high; i++) {
-            Nodo temp = lista.get(i);
-            int loc = binarySearchEdades_Ma(lista, temp.getAge(), low, i - 1);
-            for (int j = i - 1; j >= loc; j--) {
-                lista.set(j + 1, lista.get(j));
-            }
-            lista.set(loc, temp);
-        }
-    }
-    //ordenar nombres
-    // Alfabetico
-   
-}
-    public static int binarySearchNombres_Ma(LinkedList<Nodo> lista, String elemento, int low, int high) {//inicio es high, fin es low
-        if (low <= high) {
-            if (elemento.compareTo(lista.get(high).getNombre()) > 0) {
-                return high + 1;
-            } else {
-                return high;
-            }
-        }
-
-        int mid = (high + low) / 2;
-
-        if (elemento.compareTo(lista.get(mid).getNombre()) == 0) {
+    //Orden Descendente (mayor a menor osea Ma)
+    public int binarySearchEdades_Ma(LinkedList<Nodo> list, int edad, int low, int high) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (edad == list.get(mid).getAge())
             return mid + 1;
-        }
-
-        if (elemento.compareTo(lista.get(mid).getNombre()) > 0) {
-            return binarySearchNombres_Ma(lista, elemento, mid + 1, low);
-        } else {
-            return binarySearchNombres_Ma(lista, elemento, high, mid - 1);
-        }
+        else if (edad < list.get(mid).getAge()) // Cambio aquí
+            low = mid + 1;
+        else
+            high = mid - 1;
     }
+    return low;
+}
 
-private void binaryInsertionSortNombres_Ma(int low, int high) {
+public void binaryInsertionSortEdades_Ma(int low, int high) {
     for (int i = low + 1; i <= high; i++) {
         Nodo temp = lista.get(i);
-        int loc = binarySearchNombres_Ma(lista, temp.getNombre(), low, i - 1);
+        int loc = binarySearchEdades_Ma(lista, temp.getAge(), low, i - 1);
+        for (int j = i - 1; j >= loc; j--) {
+            if (lista.get(j).getAge() < temp.getAge()) {
+                lista.set(j + 1, lista.get(j));
+            } else {
+                lista.set(j + 1, temp);
+                break;
+            }
+        }
+        if (loc != i) {
+            lista.set(loc, temp);
+        }
+    }
+}
+
+
+    // Métodos para ordenar por edad (edades de menor a mayor)
+    //orden Ascendente (menor a mayor osea Me)
+    public int binarySearchEdades_Me(LinkedList<Nodo> list, int edad, int low, int high) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (edad == list.get(mid).getAge())
+            return mid + 1;
+        else if (edad < list.get(mid).getAge())
+            high = mid - 1; // Cambio aquí
+        else
+            low = mid + 1;
+    }
+    return low;
+}
+
+public void binaryInsertionSortEdades_Me(int low, int high) {
+    for (int i = low + 1; i <= high; i++) {
+        Nodo temp = lista.get(i);
+        int loc = binarySearchEdades_Me(lista, temp.getAge(), low, i - 1);
+        for (int j = i - 1; j >= loc; j--) {
+            if (lista.get(j).getAge() > temp.getAge()) { // Cambio aquí
+                lista.set(j + 1, lista.get(j)); // Cambio aquí
+            } else {
+                lista.set(j + 1, temp);
+                break;
+            }
+        }
+        if (loc != i) {
+            lista.set(loc, temp);
+        }
+    }
+}
+
+
+    //ordenar nombres
+    ///////////////////Alfabetico///////////////////////////////
+   public static int binarySearchNombres_Ma(LinkedList<Nodo> lista, String elemento, int low, int high) {
+    if (low >= high) {
+        if (elemento.compareTo(lista.get(low).getNombre()) > 0) {
+            return low + 1;
+        } else {
+            return low;
+        }
+    }
+
+    int mid = (low + high) / 2;
+
+    if (elemento.compareTo(lista.get(mid).getNombre()) == 0) {
+        return mid;
+    }
+
+    if (elemento.compareTo(lista.get(mid).getNombre()) > 0) {
+        return binarySearchNombres_Ma(lista, elemento, mid + 1, high);
+    } else {
+        return binarySearchNombres_Ma(lista, elemento, low, mid - 1);
+    }
+}
+
+public void binaryInsertionSortNombres_Ma() {
+    int n = lista.size()-1;
+    for (int i = 1; i < n; i++) {
+        Nodo temp = lista.get(i);
+        int loc = binarySearchNombres_Ma(lista, temp.getNombre(), 0, i - 1);
         for (int j = i - 1; j >= loc; j--) {
             lista.set(j + 1, lista.get(j));
         }
         lista.set(loc, temp);
     }
 }
+
 public boolean esMayor(Nodo a, Nodo b) {
         int i = 0;
         while (i < a.getNombre().length() && i < b.getNombre().length()) {
@@ -245,7 +231,49 @@ public boolean esMayor(Nodo a, Nodo b) {
         }
         return a.getNombre().length() > b.getNombre().length();
     }
+    //orden Alfabetico inverso/////////
 
+    public static int binarySearchNombres_Me(LinkedList<Nodo> lista, String elemento, int low, int high) {
+    if (low > high) {
+        return low;
+    }
+
+    int mid = (low + high) / 2;
+
+    if (elemento.compareTo(lista.get(mid).getNombre()) > 0) {
+        return binarySearchNombres_Me(lista, elemento, mid + 1, high);
+    } else {
+        return binarySearchNombres_Me(lista, elemento, low, mid - 1);
+    }
+}
+
+
+
+    public void binaryInsertionSortNombres_Me(int low, int high) {
+    for (int i = low + 1; i <= high; i++) {
+        Nodo temp = lista.get(i);
+        int loc = binarySearchNombres_Me(lista, temp.getNombre(), low, i - 1);
+        for (int j = i - 1; j >= loc + 1; j--) {
+            lista.set(j + 1, lista.get(j));
+        }
+        lista.set(loc + 1, temp);
+    }
+}
+
+public boolean esMenor(Nodo a, Nodo b) {
+    int i = 0;
+    while (i < a.getNombre().length() && i < b.getNombre().length()) {
+        if (a.getNombre().charAt(i) > b.getNombre().charAt(i)) {
+            cont_comparacion++;
+            return true;
+        } else if (a.getNombre().charAt(i) < b.getNombre().charAt(i)) {
+            cont_comparacion++;
+            return false;
+        }
+        i++;
+    }
+    return a.getNombre().length() > b.getNombre().length();
+}
 
 
     public void printList(LinkedList<Integer> list) {
@@ -257,4 +285,8 @@ public boolean esMayor(Nodo a, Nodo b) {
     }
 
     
+
+
+    
 }
+

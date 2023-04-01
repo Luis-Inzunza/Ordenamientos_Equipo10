@@ -1,10 +1,6 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.LinkedList;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -44,10 +40,7 @@ public class QuickSortApp {
 
     private void printMetrics(){
         String rutaArchivo = "src/Algoritmo_Data/Metrics.csv";
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo))) {
-
-            ultimaLinea(rutaArchivo);
-
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo,true))) {
             escritor.write("QuickSort");
             escritor.newLine();
             escritor.write("Tiempo de ejecucion: " + tiempoTotal + " milisegundos, Comparaciones: "+quick.cont_comparacion + ". Intercambios: "+ quick.cont_intercambio);
@@ -75,13 +68,5 @@ public class QuickSortApp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void ultimaLinea(String archivo) throws IOException{
-        BufferedReader br = new BufferedReader(new FileReader(archivo));
-        String linea;
-
-        while ((linea = br.readLine()) != null) { }
-
     }
 }

@@ -49,11 +49,8 @@ public class BinaryInsertionSortApp {
 
     private void printMetrics(){
         String rutaArchivo = "src/Algoritmo_Data/Metrics.csv";
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo))) {
-
-            ultimaLinea(rutaArchivo);
-
-            escritor.write("QuickSort");
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo,true))) {
+            escritor.write("BinaryInsertionSort");
             escritor.newLine();
             escritor.write("Tiempo de ejecucion: " + tiempoTotal + " milisegundos, Comparaciones: "+quick.cont_comparacion + ". Intercambios: "+ quick.cont_intercambio);
 
@@ -95,19 +92,5 @@ public class BinaryInsertionSortApp {
 
 ///////////////////////////////////////////////
 
-    public static void main(String[] args) {
-        LinkedList<Integer> lista = new LinkedList<Integer>();
-        BinaryInsertionSort binSort = new BinaryInsertionSort();
-        lista.add(5);
-        lista.add(493);
-        lista.add(1);
-        lista.add(45);
-        lista.add(5);
-        lista.add(493);
-        lista.add(1);
-        lista.add(45);
-        binSort.binaryInsertionSort(lista, 0);
-        System.out.println(lista);
-       
-    }
+    
 }

@@ -1,2 +1,6 @@
 QuickSort
-Tiempo de ejecucion: 27 milisegundos, Comparaciones: 27390. Intercambios: 1892
+Tiempo de ejecucion: 11 milisegundos, Comparaciones: 8971. Intercambios: 1867BinaryInsertionSort
+Tiempo de ejecucion: 228 milisegundos, Comparaciones: 0. Intercambios: 0QuickSort
+Tiempo de ejecucion: 15 milisegundos, Comparaciones: 23962. Intercambios: 1941BinaryInsertionSort
+Tiempo de ejecucion: 229 milisegundos, Comparaciones: 0. Intercambios: 0QuickSort
+Tiempo de ejecucion: 15 milisegundos, Comparaciones: 25860. Intercambios: 1930

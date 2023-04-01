@@ -1,5 +1,4 @@
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 import Data.LectorCSV;
@@ -93,14 +92,15 @@ public class Visual {
         //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(3, true);
         //binary.display();
 
-        QuickSortApp quicksort = new QuickSortApp(3,true);
-        quicksort.print();
+        //QuickSortApp quicksort = new QuickSortApp(3,true);
+        //quicksort.print();
 
         //MergeSortApp merge = new MergeSortApp(3, true);
         //merge.display();
 
         //RadixSortApp radix = new RadixSortApp(3, true);
         //radix.display();
+        System.out.println("Aun incompleto");
     }
 
     private void Mayor_menor(){ 
@@ -117,21 +117,21 @@ public class Visual {
             QuickSortApp quicksort = new QuickSortApp(1,true);
             quicksort.print();
 
-            MergeSortApp merge = new MergeSortApp(1,true);
-            merge.display();
+            //MergeSortApp merge = new MergeSortApp(1,true);
+            //merge.display();
 
             //RadixSortApp radix = new RadixSortApp(1,true);
             //radix.display();
         }else{
             if(_input == 2){
-                //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,true);
-                //binary.display();
+                BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,true);
+                binary.print();
 
                 QuickSortApp quicksort = new QuickSortApp(2,true);
                 quicksort.print();
 
-                MergeSortApp merge = new MergeSortApp(2,true);
-                merge.display();
+                //MergeSortApp merge = new MergeSortApp(2,true);
+                //merge.print();
 
                 //RadixSortApp radix = new RadixSortApp(2,true);
                 //radix.display();
@@ -155,7 +155,7 @@ public class Visual {
 
         if(_input == 1){
             //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(1,false);
-            //binary.display();
+            //binary.print();
 
             QuickSortApp quicksort = new QuickSortApp(1,false);
             quicksort.print();
@@ -167,8 +167,8 @@ public class Visual {
             //radix.display();
         }else{
             if(_input == 2){
-                //BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,false);
-                //binary.display();
+                BinaryInsertionSortApp binary = new BinaryInsertionSortApp(2,false);
+                binary.print();
 
                 QuickSortApp quicksort = new QuickSortApp(2,false);
                 quicksort.print();

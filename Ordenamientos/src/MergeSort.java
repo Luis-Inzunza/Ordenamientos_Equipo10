@@ -7,13 +7,15 @@ public class MergeSort{
    private boolean MayorAmenor_invertido;
    public int cont_comparacion = 0;
    public int cont_intercambio = 0;
+   private int ciclos = 0;
 
 	public LinkedList<Nodo> getLista() {
 		return lista;
 	}
 
-	public void setLista(LinkedList<Nodo> lista) {
-		this.lista = lista;
+	public void setLista(LinkedList<Nodo> list) {
+      //System.out.println(list.size());
+      lista = list;
 	}
 
    public void setTipo(int tipo) {
@@ -24,26 +26,26 @@ public class MergeSort{
       MayorAmenor_invertido = mayorAmenor_invertido;
    }
 
-
-
-
    public void mergesort(LinkedList<Nodo> lista){
-      if (lista.size() > 1) {
+      ciclos++;
+      if (lista.size() > 2) {
          // Divide la lista en dos mitades
          LinkedList<Nodo> mitadIzquierda = new LinkedList<>();
          LinkedList<Nodo> mitadDerecha = new LinkedList<>();
          int mitad = lista.size() / 2;
          for (int i = 0; i < mitad; i++) {
-             mitadIzquierda.add(lista.get(i));
+            mitadIzquierda.add(lista.get(i));
          }
          for (int i = mitad; i < lista.size(); i++) {
-             mitadDerecha.add(lista.get(i));
+            mitadDerecha.add(lista.get(i-mitad));
          }
 
          // Ordena las dos mitades de manera recursiva
          mergesort(mitadIzquierda);
          mergesort(mitadDerecha);
          sort(mitadIzquierda, mitadDerecha);
+      }
+      if(lista.size() == 891 && ciclos > 2){
          setLista(lista);
       }
    }
@@ -94,29 +96,35 @@ public class MergeSort{
 
 
    private void mergesortEdades_Ma(LinkedList<Nodo> mitadIzquierda,LinkedList<Nodo> mitadDerecha){
-      if (mitadIzquierda != null && mitadDerecha != null){
-         int i = 1;
-         int j = 0;
-         int k = 0;
-         while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
-            if(mitadIzquierda.get(i).getAge() < mitadDerecha.get(j).getAge()) {
+      int i = 0, j = 0, k = 0;
+
+      while (i < mitadIzquierda.size() && j < mitadDerecha.size()) {
+         if(mitadIzquierda.get(i).getAge() <= mitadDerecha.get(j).getAge()) {
+            if (k < lista.size()) {
                lista.set(k, mitadIzquierda.get(i));
                i++;
-            } else {
+            }
+
+         } else {
+            if (k < lista.size()) {
                lista.set(k, mitadDerecha.get(j));
                j++;
             }
-            k++;
          }
-         while (i <= mitadIzquierda.size()) {
+         k++;
+      }
+
+      while (i < mitadIzquierda.size() ) {
+         if (k < lista.size()) {
             lista.set(k, mitadIzquierda.get(i));
             i++;
-            k++;
          }
-         while (j <= mitadDerecha.size()) {
+      }
+      
+      while (j < mitadDerecha.size() ) {
+         if (k < lista.size()) {
             lista.set(k, mitadDerecha.get(j));
             j++;
-            k++;
          }
       }
    }
